@@ -13,7 +13,7 @@ if ct>=12 and ct<=16:
 if ct>16:
     greeting="evening"
 
-#main formatting
+#main formatting for the front page
 page=tk.Tk()
 
 heading=tk.Label(page,text=f"Good {greeting}",pady=10)
