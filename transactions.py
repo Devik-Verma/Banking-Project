@@ -1,3 +1,4 @@
+#import the required modules
 import openpyxl as op
 import tkinter as tk 
 import datetime as dt
@@ -6,7 +7,8 @@ import fetch_the_mail
 
 def dep():
     date=dt.datetime.now().strftime("%Y-%m-%d")
-
+ 
+    #disable the entry widgets
     ent1.config(state="readonly")
     ent2.config(state="readonly")
     
@@ -17,6 +19,7 @@ def dep():
     ws2=wb["Deposit"]
 
     for i in range(2,1000000):
+        #breaks the loop as soon as an empty row is found to avoid large iterations
         if ws[f"A{i}"].value==None:
             break
         if name==ws[f"A{i}"].value:
@@ -24,6 +27,8 @@ def dep():
                 ws[f"B{i}"].value+=int(ent1.get())
                 ws2.append([date,int(ent1.get()),name])
                 lbl3.config(text=f"Amount of {ent1.get()} has been successfully deposited")
+
+                #mailing the user
                 mail=fetch_the_mail.gettingmail(name)
                 mailing.sendmail1(name,mail,ent1.get())
             else:
@@ -44,16 +49,20 @@ def wit():
     ws2=wb["Withdraw"]
 
     for i in range(2,1000000):
+        #breaks the loop as soon as an empty row is found to avoid large iterations
         if ws[f"A{i}"].value==None:
             break
         if name==ws[f"A{i}"].value:
             if int(ent2.get())==ws[f"C{i}"].value:
+                #if the balance is low 
                 if int(ent1.get())>ws[f"B{i}"].value:
                     lbl3.config(text="Insufficient balance")
                 else:
                     ws[f"B{i}"].value-=int(ent1.get())
                     ws2.append([date,int(ent1.get()),name])
                     lbl3.config(text=f"Amount of {ent1.get()} has been successfully withdrawn")
+
+                    #mailing the user
                     mail=fetch_the_mail.gettingmail(name)
                     mailing.sendmail2(name,mail,ent1.get())
             else:

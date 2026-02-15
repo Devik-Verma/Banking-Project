@@ -1,3 +1,5 @@
+#This segment is to update the new signed in user to the database
+
 import openpyxl as op
 
 filename="users.xlsx"

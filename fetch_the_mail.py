@@ -1,3 +1,5 @@
+#This segment is only used to fetch the mail of user whose currently depositing or withdrawing money 
+
 import openpyxl as op
 
 filename="users.xlsx"

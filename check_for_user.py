@@ -1,3 +1,5 @@
+#This segment checks whether the user is present in the database also is the entered password correct
+
 import openpyxl as op
 
 def check(name,pas):
