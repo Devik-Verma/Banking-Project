@@ -16,7 +16,7 @@ def check():
 
     val=check_for_user.check(ent1.get(),ent2.get())
     if val!="":
-
+        #changing the configs to provide a better UI to the users
         ent1.config(state="readonly")
         ent2.config(state="readonly")
         lbl3.config(text="Account Verified please proceed")
@@ -26,9 +26,10 @@ def check():
         btn3.config(state="active")
     
     else:
-        lbl3.config(text="User not found or incorrect password entered")
+        lbl3.config(text="User not found or incorrect pin entered")
     
 def log_in():
+    #declaring globals
     global ent1
     global ent2
     global lbl3
@@ -50,7 +51,7 @@ def log_in():
     ent1=tk.Entry(frame1)
     ent1.grid(row=0,column=1)
 
-    lbl2=tk.Label(frame1,text="Enter your password")
+    lbl2=tk.Label(frame1,text="Enter your pin")
     lbl2.grid(row=1,column=0)
 
     ent2=tk.Entry(frame1)

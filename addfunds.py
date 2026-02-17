@@ -3,8 +3,6 @@ import tkinter as tk
 
 def verify():
 
-    ent1.config(state="readonly")
-    ent1.config(state="readonly")
 
     value=ent1.get()
     if ent2.get()==password and value.isnumeric() and int(value)>0:
@@ -12,6 +10,11 @@ def verify():
         lbl4.config(text="You may now log in to your account")
         btn.config(state="disabled")
         database.upload(fullname,mail,password,value)
+
+
+        #disabling the entry widgets
+        ent1.config(state="readonly")
+        ent2.config(state="readonly")
     else:
         lbl3.config(text="Invalid inputs or wrong password")
 

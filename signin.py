@@ -10,10 +10,8 @@ def check():
     global mail
     global password
 
-    ent1.config(state="readonly")
-    ent2.config(state="readonly")
-    ent3.config(state="readonly")
 
+    #regex for username and email valiadations
     p1=r'^[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+$'
     p2=r'^[a-zA-Z0-9]{5,}@[a-zA-Z]{3,}\.[a-zA-Z]{2,}'
     
@@ -32,15 +30,19 @@ def check():
         outro.config(text="Invalid mail")
 
     elif temp2 in password or temp2.lower() in password:
-        outro.config(text="Do not include your name in the password")
+        outro.config(text="Do not include your name in the pin it should be a number")
 
+    #when the inputs are valid 
     elif re.fullmatch(p1,name) and re.fullmatch(p2,mail):
         if temp2 not in password and temp2.lower() not in password:
             outro.config(text="You may now add funds to this account")
             btn.config(state="disabled")
             addf.config(state="active")
 
-
+            ent1.config(state="readonly")
+            ent2.config(state="readonly")
+            ent3.config(state="readonly")
+        
 def sign_in():
     #declaring globals
     global ent1
@@ -55,6 +57,7 @@ def sign_in():
     frame1=tk.Frame(page2)
     frame2=tk.Frame(page2)
     frame3=tk.Frame(page2)
+    
     #1st frame
     heading=tk.Label(frame1,text="SIGN IN FORM")
     heading.pack()
@@ -67,7 +70,7 @@ def sign_in():
     msg2=tk.Label(frame2,text="Enter your email")
     msg2.grid(row=1,column=0)
 
-    msg3=tk.Label(frame2,text="Enter your password")
+    msg3=tk.Label(frame2,text="Enter your pin")
     msg3.grid(row=2,column=0)
 
     ent1=tk.Entry(frame2)

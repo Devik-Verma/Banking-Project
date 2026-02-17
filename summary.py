@@ -45,8 +45,16 @@ output+="WITHDRAW\n"
 for name,money in withdrawusers.items():
     output+=name+":"+str(money)+"\n"
 
-output+=f"\nThe maximum deposit made by {s1[0][0]} of rupees {s1[0][1]}\n"
-output+=f"\nThe maximum withdraw made by {s2[0][0]} of rupees {s2[0][1]}"
+#check whether sheets are empty or not 
+if s1:
+    output+=f"\nThe maximum deposit made by {s1[0][0]} of rupees {s1[0][1]}\n"
+else:
+    output+="\nNo deposits found\n"
+
+if s2:
+    output+=f"\nThe maximum withdraw made by {s2[0][0]} of rupees {s2[0][1]}"
+else:
+    output+="\nNo withdrawals found"
 
 #Tkinter segment
 def show():

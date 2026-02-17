@@ -7,6 +7,8 @@ import fetch_the_mail
 import otp
 
 def sendotp():
+    ent1.config(state="readonly")
+    ent2.config(state="readonly")
     lblfortop.config(text="Please enter the OTP")
     ent3.config(state="normal")
     otp.generate(ent2.get())
@@ -16,8 +18,6 @@ def dep():
     date=dt.datetime.now().strftime("%Y-%m-%d")
  
     #disable the entry widgets
-    ent1.config(state="readonly")
-    ent2.config(state="readonly")
     ent3.config(state="readonly")
     
     filename="users.xlsx"
@@ -39,8 +39,8 @@ def dep():
                 ws[f"B{i}"].value+=int(ent1.get())
                 ws2.append([date,int(ent1.get()),name])
                 lbl3.config(text=f"Amount of {ent1.get()} has been successfully deposited")
-
                 wb.save(filename)
+
                 #mailing the user
                 mail=fetch_the_mail.gettingmail(name)
                 mailing.sendmail1(name,mail,ent1.get())
@@ -79,6 +79,7 @@ def wit():
                     ws[f"B{i}"].value-=int(ent1.get())
                     ws2.append([date,int(ent1.get()),name])
                     lbl3.config(text=f"Amount of {ent1.get()} has been successfully withdrawn")
+                    wb.save(filename)
 
                     #mailing the user
                     mail=fetch_the_mail.gettingmail(name)
@@ -86,7 +87,6 @@ def wit():
             else:
                 lbl3.config(text="Incorrect OTP entered")
     
-    wb.save(filename)
 
 
 #tkinter segment

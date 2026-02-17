@@ -4,6 +4,7 @@ from email.message import EmailMessage
 #This segment consists of place holders the programmer needs to enter his/her mail and app password to proceed
 
 def sendmail1(name,mail,money):
+
     email = EmailMessage()
     email['From'] = "your mail"
     email['To'] = f"{mail}"
@@ -17,6 +18,7 @@ def sendmail1(name,mail,money):
     server.quit()
 
 def sendmail2(name,mail,money):
+
     email = EmailMessage()
     email['From'] = "your mail"
     email['To'] = f"{mail}"
@@ -28,4 +30,5 @@ def sendmail2(name,mail,money):
     server.login("your mail", "your app password")
     server.send_message(email)
     server.quit()
+
 
